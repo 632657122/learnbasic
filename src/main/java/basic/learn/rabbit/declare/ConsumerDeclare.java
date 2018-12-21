@@ -1,4 +1,4 @@
-package basic.learn.rabbit;
+package basic.learn.rabbit.declare;
 
 import com.rabbitmq.client.*;
 
@@ -10,7 +10,7 @@ import java.util.concurrent.TimeoutException;
  * @date 2018-12-21
  * @desc 消息消费者
  */
-public class Consumer {
+public class ConsumerDeclare {
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();

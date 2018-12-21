@@ -1,4 +1,4 @@
-package basic.learn.rabbit;
+package basic.learn.rabbit.bind;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -10,9 +10,9 @@ import java.util.concurrent.TimeoutException;
 /**
  * @author wangtao
  * @date 2018-12-21
- * @desc 消息生产者
+ * @desc
  */
-public class Producer {
+public class ProducerBind {
 
     public static void main(String[] args) throws IOException, TimeoutException {
         //创建连接工厂
@@ -30,12 +30,12 @@ public class Producer {
         Channel channel = conn.createChannel();
 
         //声明交换器
-        String exchangeName = "hello-exchange";
-        channel.exchangeDeclare(exchangeName, "direct", true);
+        String exchangeName = "holy-exchange";
+        channel.exchangeDeclare(exchangeName, "fanout", true);
         String routingKey = "hola";
 
         //发布消息
-        byte[] messageBodyBytes = "message".getBytes();
+        byte[] messageBodyBytes = "holy_test".getBytes();
         channel.basicPublish(exchangeName, routingKey, null, messageBodyBytes);
 
         channel.close();
