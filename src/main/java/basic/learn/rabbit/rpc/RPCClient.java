@@ -18,7 +18,6 @@ public class RPCClient {
 
     private Connection connection;
     private Channel channel;
-    private String requestQueueName = "rpc_queue";
     private String replyQueueName;
 
     public RPCClient() throws IOException, TimeoutException {
@@ -42,6 +41,7 @@ public class RPCClient {
                 .build();
 
         //向server发送请求,请求消息发送给了队列replyQueueName,另外在props里加上了接收地replyQueueName和暗号corrId
+        String requestQueueName = "rpc_queue";
         channel.basicPublish("", requestQueueName, props, message.getBytes("UTF-8"));
         //用BlockingQueue来延缓main线程,1代表我们只需要一个response
         final BlockingQueue<String> response = new ArrayBlockingQueue<String>(1);
