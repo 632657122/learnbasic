@@ -8,7 +8,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * @author wangtao
  * @date 2018-12-21
- * @desc 消息消费者
+ * @desc 消息消费者  代码声明队列
  */
 public class ConsumerDeclare {
 

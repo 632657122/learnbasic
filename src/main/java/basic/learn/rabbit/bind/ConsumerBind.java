@@ -8,7 +8,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * @author wangtao
  * @date 2018-12-21
- * @desc
+ * @desc 使用控制台创建的队列
  */
 public class ConsumerBind {
 
