@@ -32,11 +32,13 @@ public class PRCService {
         try {
             connection = factory.newConnection();
             final Channel channel = connection.createChannel();
+            channel.exchangeDeclare("holy-exchange", "fanout", true);
 
             //准备接收
-            channel.queueDeclare(RPC_QUEUE_NAME, false, false, false, null);
+            String queueName = channel.queueDeclare(RPC_QUEUE_NAME, false, false, false, null).getQueue();
             //一次只处理一个消息
             channel.basicQos(1);
+            channel.queueBind(queueName,"holy-exchange","");
 
             System.out.println(" [x] Awaiting RPC requests");
 
