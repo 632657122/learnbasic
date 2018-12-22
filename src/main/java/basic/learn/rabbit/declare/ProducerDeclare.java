@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class ProducerDeclare {
 
-    public static void main(String[] args) throws IOException, TimeoutException {
+    public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
         //创建连接工厂
         ConnectionFactory factory = new ConnectionFactory();
         factory.setUsername("guest");
@@ -28,6 +28,7 @@ public class ProducerDeclare {
 
         //获得信道
         Channel channel = conn.createChannel();
+        channel.confirmSelect();
 
         //声明交换器
         String exchangeName = "hello-exchange";
@@ -37,6 +38,8 @@ public class ProducerDeclare {
         //发布消息
         byte[] messageBodyBytes = "message".getBytes();
         channel.basicPublish(exchangeName, routingKey, null, messageBodyBytes);
+
+        System.out.println("confirm:" + channel.waitForConfirms());
 
         channel.close();
         conn.close();
