@@ -14,6 +14,8 @@ public class ConsumerDeclare {
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
+        //心跳
+        factory.setRequestedHeartbeat(60);
         factory.setUsername("guest");
         factory.setPassword("guest");
         factory.setHost("localhost");
