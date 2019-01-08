@@ -30,7 +30,7 @@ public class InternTest {
         所以"stringBuildertest"最先创建在堆中
          */
 
-        System.out.println(str2.intern() == "stringBuildertest");//true
+        System.out.println(str2.intern() == "stringBuildertest");//true 此时会把"stringBuildertest"添加到常量区
         System.out.println(str2.intern() == str2);//true
         /*
         如果str2和str1字面量相同且str1先创建，则str2.intern()指向str1
