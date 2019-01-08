@@ -37,8 +37,8 @@ public class InternTest {
          */
 
         String str3 = new StringBuilder("te").append("st").toString();
-        System.out.println(str3.intern() == str3);//false
-        System.out.println(str3.intern() == "test");//true 验证上面的结论,test在创建str2时已经被添加到常量区
+        System.out.println(str3.intern() == "test");//true
+        System.out.println(str3.intern() == str3);//false 验证上面的结论,test在创建str2时已经被添加到常量区
 
 
 
