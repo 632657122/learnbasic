@@ -31,7 +31,7 @@ public class InternTest {
          */
 
         System.out.println(str2.intern() == "stringBuildertest");//true  str2.intern()将"stringBuildertest"的引用添加到常量区
-        /*如果是 "stringBuildertest" ==str2.intern(),那么下面两条都为false，原因是会先将"stringBuildertest"添加到常量区 */
+        /*如果是 "stringBuildertest" ==str2.intern(),那么下面两条都为false，原因是会先将"stringBuildertest"添加到常量区而不是其引用 */
         System.out.println(str2.intern() == str2);//true
         System.out.println(str2 == "stringBuildertest");//true 常量区中
         /*
