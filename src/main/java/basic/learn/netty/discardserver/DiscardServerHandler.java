@@ -14,7 +14,10 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf in = (ByteBuf) msg;
-        System.out.println("收到消息为：" + in.toString());
+        byte[] bytes = new byte[in.readableBytes()];
+        in.getBytes(in.readerIndex(), bytes);
+
+        System.out.println("收到消息为：" + new String(bytes, 0, in.readableBytes()));
         ctx.writeAndFlush(in);
     }
 
