@@ -14,7 +14,7 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf in = (ByteBuf) msg;
-        System.out.println("收到消息为："+in);
+        System.out.println("收到消息为：" + in.toString());
         ctx.writeAndFlush(in);
     }
 
@@ -23,5 +23,6 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
         // 当出现异常就关闭连接
         cause.printStackTrace();
         ctx.close();
+
     }
 }
